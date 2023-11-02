@@ -18,5 +18,6 @@ module.exports = {
     'simple-import-sort/imports': 'warn',
     'prettier/prettier': 'error',
     'tailwindcss/no-custom-classname': 0,
+    'react/prop-types': 0,
   },
 };
