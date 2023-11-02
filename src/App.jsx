@@ -1,5 +1,7 @@
-const Hello = () => {
-  return <div className="text-red-500">Hello</div>;
-};
+import { RouterProvider } from 'react-router-dom';
 
-export default Hello;
+import { router } from './modules/router/mainRouter';
+
+export default function App() {
+  return <RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} />;
+}
