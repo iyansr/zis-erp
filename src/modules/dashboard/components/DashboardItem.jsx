@@ -1,4 +1,4 @@
-const DahboardItem = ({ item }) => {
+const DashboardItem = ({ item }) => {
   return (
     <div className="aspect-square p-4 justify-between flex flex-col bg-white shadow-lg h-56 w-56 rounded-lg border border-zinc-200">
       <p className="text-lg">{item.title}</p>
@@ -12,4 +12,4 @@ const DahboardItem = ({ item }) => {
   );
 };
 
-export default DahboardItem;
+export default DashboardItem;

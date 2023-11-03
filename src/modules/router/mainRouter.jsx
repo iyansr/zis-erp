@@ -3,6 +3,7 @@ import { createBrowserRouter, Outlet, redirect } from 'react-router-dom';
 import LoginPage from '../auth/pages/LoginPage';
 import DashboardPage from '../dashboard/pages/DashboardPage';
 import GLAccountPage from '../gl-account/pages/GLAccountPage';
+import MasterDataPage from '../master-data/pages/MasterDataPage';
 import { Layout } from '../shared/components/Layout';
 import { MasterDataLayout } from '../shared/components/MasterDataLayout';
 
@@ -34,15 +35,19 @@ export const router = createBrowserRouter([
           },
           {
             path: 'master-data',
-            element: <MasterDataLayout />,
+            element: <MasterDataLayout showHeader={false} />,
             children: [
               {
                 index: true,
-                element: <div></div>,
+                element: <MasterDataPage />,
               },
               {
                 path: 'gl-account',
-                element: <GLAccountPage />,
+                element: (
+                  <MasterDataLayout isRoot={false}>
+                    <GLAccountPage />
+                  </MasterDataLayout>
+                ),
               },
             ],
           },

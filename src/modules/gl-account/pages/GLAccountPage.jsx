@@ -1,4 +1,5 @@
 import { PlusIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import TableInstance from '../../shared/components/TableInstance';
 import useGLTable from '../hooks/useGLTable';
@@ -10,8 +11,12 @@ const GLAccountPage = () => {
     <div className="p-10">
       <div className="text-sm breadcrumbs mb-4">
         <ul>
-          <li className="text-accent">Buat dan Kelola Master Data</li>
-          <li>Master Data</li>
+          <li className="text-accent">
+            <Link to="/dashboard">Buat dan Kelola Master Data</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/master-data">Master Data</Link>
+          </li>
           <li>G/L Account</li>
         </ul>
       </div>

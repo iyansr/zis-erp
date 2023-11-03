@@ -1,63 +1,48 @@
-import {
-  AreaChart,
-  Banknote,
-  FileBarChart,
-  FileInput,
-  Newspaper,
-  PieChart,
-  SunMedium,
-} from 'lucide-react';
+import { BookOpen, Building, FileText, Landmark, Wallet, Warehouse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import DashboardItem from '../components/DashboardItem';
+import DashboardItem from '../../dashboard/components/DashboardItem';
 
 const data = [
   {
-    title: 'Buat dan Kelola Master Data',
-    description: 'Company Code, Vendor, Tipe Dokumen, G/L Account',
-    Icon: SunMedium,
-    href: '/dashboard/master-data',
-  },
-  {
-    title: 'Lacak dan Lihat Faktur',
-    description: 'Invoice',
-    Icon: Newspaper,
-    iconText: '120',
+    title: 'Company Code Master Data',
+    description: 'Pengaturan Master Kode Perusahaan',
+    Icon: Building,
     href: '#!',
   },
   {
-    title: 'Buat dan Lihat Dana Tunai',
-    description: 'Petty Cash',
-    Icon: Banknote,
+    title: 'Vendor Master Data',
+    description: 'Pengaturan Master Data Vendor',
+    Icon: Warehouse,
     href: '#!',
   },
   {
-    title: 'Lihat Data Koleksi MT940',
-    description: 'MT940',
-    Icon: FileInput,
+    title: 'GL Account Master Data',
+    description: '',
+    Icon: BookOpen,
+    href: '/dashboard/master-data/gl-account',
+  },
+  {
+    title: 'Document Type Master Data',
+    description: 'Pengaturan Master Data Dokumen',
+    Icon: FileText,
     href: '#!',
   },
   {
-    title: 'Buatkan Laporan Koleksi MT940',
-    description: 'MT940',
-    Icon: FileBarChart,
+    title: 'Bank',
+    description: 'Pengaturan Master Data untuk Bank',
+    Icon: Landmark,
     href: '#!',
   },
   {
-    title: 'Lacak dan Lihat Alokasi Anggaran',
-    description: 'Budgeting',
-    Icon: PieChart,
-    href: '#!',
-  },
-  {
-    title: 'Hasilkan Laporan Anggaran',
-    description: 'Budgeting',
-    Icon: AreaChart,
+    title: 'Akun Bank',
+    description: 'Pengaturan Master Data untuk Akun Rekening Bank',
+    Icon: Wallet,
     href: '#!',
   },
 ];
 
-const DashboardPage = () => {
+const MasterDataPage = () => {
   return (
     <div>
       <img
@@ -94,4 +79,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default MasterDataPage;
