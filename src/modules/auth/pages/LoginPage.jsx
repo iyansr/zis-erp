@@ -13,7 +13,9 @@ const LoginPage = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    return navigate('/dashboard');
+    return navigate('/dashboard', {
+      replace: true,
+    });
   };
 
   return (

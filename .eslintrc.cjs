@@ -14,7 +14,7 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh', 'simple-import-sort', 'prettier', 'react'],
   rules: {
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    // 'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'simple-import-sort/imports': 'warn',
     'prettier/prettier': 'error',
     'tailwindcss/no-custom-classname': 0,

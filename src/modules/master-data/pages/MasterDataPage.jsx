@@ -1,7 +1,7 @@
 import { BookOpen, Building, FileText, Landmark, Wallet, Warehouse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import DashboardItem from '../../dashboard/components/DashboardItem';
+import DashboardItem from '@/modules/dashboard/components/DashboardItem';
 
 const data = [
   {
@@ -14,7 +14,7 @@ const data = [
     title: 'Vendor Master Data',
     description: 'Pengaturan Master Data Vendor',
     Icon: Warehouse,
-    href: '#!',
+    href: '/dashboard/master-data/vendor-master-data',
   },
   {
     title: 'GL Account Master Data',

@@ -6,6 +6,7 @@ import GLAccountPage from '../gl-account/pages/GLAccountPage';
 import MasterDataPage from '../master-data/pages/MasterDataPage';
 import { Layout } from '../shared/components/Layout';
 import { MasterDataLayout } from '../shared/components/MasterDataLayout';
+import VendorMasterDataPage from '../vendor-master-data/pages/VendorMasterDataPage';
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
                 element: (
                   <MasterDataLayout isRoot={false}>
                     <GLAccountPage />
+                  </MasterDataLayout>
+                ),
+              },
+              {
+                path: 'vendor-master-data',
+                element: (
+                  <MasterDataLayout isRoot={false}>
+                    <VendorMasterDataPage />
                   </MasterDataLayout>
                 ),
               },
