@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet, redirect } from 'react-router-dom';
 
 import LoginPage from '../auth/pages/LoginPage';
+import AlokasiAnggaranPage from '../budgeting/pages/AlokasiAnggaranPage';
 import DashboardPage from '../dashboard/pages/DashboardPage';
 import GLAccountPage from '../gl-account/pages/GLAccountPage';
 import MasterDataPage from '../master-data/pages/MasterDataPage';
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
           {
             index: true,
             element: <DashboardPage />,
+          },
+          {
+            path: 'anggaran',
+            element: <AlokasiAnggaranPage />,
           },
           {
             path: 'master-data',

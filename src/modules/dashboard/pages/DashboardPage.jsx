@@ -47,7 +47,7 @@ const data = [
     title: 'Lacak dan Lihat Alokasi Anggaran',
     description: 'Budgeting',
     Icon: PieChart,
-    href: '#!',
+    href: '/dashboard/anggaran',
   },
   {
     title: 'Hasilkan Laporan Anggaran',
