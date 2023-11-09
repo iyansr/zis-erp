@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet, redirect } from 'react-router-dom';
 
 import LoginPage from '../auth/pages/LoginPage';
+import BankMasterDataPage from '../bank-master-data/pages/BankMasterDataPage';
 import AlokasiAnggaranPage from '../budgeting/pages/AlokasiAnggaranPage';
 import DashboardPage from '../dashboard/pages/DashboardPage';
 import GLAccountPage from '../gl-account/pages/GLAccountPage';
@@ -60,6 +61,14 @@ export const router = createBrowserRouter([
                 element: (
                   <MasterDataLayout isRoot={false}>
                     <VendorMasterDataPage />
+                  </MasterDataLayout>
+                ),
+              },
+              {
+                path: 'bank-master-data',
+                element: (
+                  <MasterDataLayout isRoot={false}>
+                    <BankMasterDataPage />
                   </MasterDataLayout>
                 ),
               },

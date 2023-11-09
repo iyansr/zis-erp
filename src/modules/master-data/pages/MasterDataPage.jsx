@@ -32,7 +32,7 @@ const data = [
     title: 'Bank',
     description: 'Pengaturan Master Data untuk Bank',
     Icon: Landmark,
-    href: '#!',
+    href: '/dashboard/master-data/bank-master-data',
   },
   {
     title: 'Akun Bank',
