@@ -6,8 +6,10 @@ import AlokasiAnggaranPage from '../budgeting/pages/AlokasiAnggaranPage';
 import DashboardPage from '../dashboard/pages/DashboardPage';
 import GLAccountPage from '../gl-account/pages/GLAccountPage';
 import MasterDataPage from '../master-data/pages/MasterDataPage';
+import ProgramManagementPage from '../program-management/pages/ProgramManagementPage';
 import { Layout } from '../shared/components/Layout';
 import { MasterDataLayout } from '../shared/components/MasterDataLayout';
+import UserManagementPage from '../user-management/pages/UserManagementPage';
 import VendorMasterDataPage from '../vendor-master-data/pages/VendorMasterDataPage';
 
 export const router = createBrowserRouter([
@@ -39,6 +41,14 @@ export const router = createBrowserRouter([
           {
             path: 'anggaran',
             element: <AlokasiAnggaranPage />,
+          },
+          {
+            path: 'user-management',
+            element: <UserManagementPage />,
+          },
+          {
+            path: 'program-management',
+            element: <ProgramManagementPage />,
           },
           {
             path: 'master-data',

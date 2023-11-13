@@ -6,6 +6,7 @@ import {
   Newspaper,
   PieChart,
   SunMedium,
+  User,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -54,6 +55,18 @@ const data = [
     description: 'Budgeting',
     Icon: AreaChart,
     href: '#!',
+  },
+  {
+    title: 'User Management',
+    description: 'User Management',
+    Icon: User,
+    href: '/dashboard/user-management',
+  },
+  {
+    title: 'Program Management',
+    description: 'Program Management',
+    Icon: User,
+    href: '/dashboard/program-management',
   },
 ];
 
