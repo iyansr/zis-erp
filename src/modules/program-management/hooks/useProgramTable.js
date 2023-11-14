@@ -1,19 +1,15 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
 import { glGolumns } from '../components/column';
-
-const defaultData = Array(20).fill({
-  thumbnail: 'https://api.zisindosat.id/public/uploads/1698106103317-Artboard 1.png',
-  filename: '1698106103317-Artboard 1.png',
-  link: 'https://portal.zisindosat.id/program/7',
-  created: '4 days ago',
-  status: 'Active',
-  action: '',
-});
+import useProgram from './useProgram';
 
 const useProgramTable = () => {
+  const { data } = useProgram();
+
+  const programs = data?.data ?? [];
+
   const table = useReactTable({
-    data: defaultData,
+    data: programs,
     columns: glGolumns,
     getCoreRowModel: getCoreRowModel(),
   });

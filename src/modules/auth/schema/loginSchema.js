@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const loginSchema = z.object({
-  email: z
+  username: z
     .string({ required_error: 'Email Harus Diisi', invalid_type_error: 'Email Harus Diisi' })
     .email('Email Tidak Valid'),
   password: z

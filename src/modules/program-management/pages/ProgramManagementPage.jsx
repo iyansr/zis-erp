@@ -4,6 +4,7 @@ import useProgramTable from '../hooks/useProgramTable';
 
 const ProgramManagementPage = () => {
   const table = useProgramTable();
+
   return (
     <div className="p-10">
       <div className="mb-4">
@@ -34,13 +35,13 @@ const ProgramManagementPage = () => {
       <div className="overflow-x-auto">
         <TableInstance table={table} />
       </div>
-      <div className="flex justify-end">
+      {/* <div className="flex justify-end">
         <div className="join">
           <button className="join-item btn btn-ghost">«</button>
           <button className="join-item btn btn-ghost">1 of 20</button>
           <button className="join-item btn btn-ghost">»</button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

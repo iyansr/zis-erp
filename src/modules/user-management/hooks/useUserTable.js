@@ -1,18 +1,15 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
 import { glGolumns } from '../components/column';
-
-const defaultData = Array(20).fill({
-  name: 'John Doe',
-  role: 'Admin',
-  created: '4 days ago',
-  status: 'Active',
-  action: '',
-});
+import useQueryUsers from './useQueryUsers';
 
 const useUserTable = () => {
+  const { data } = useQueryUsers();
+
+  const users = data?.data || [];
+
   const table = useReactTable({
-    data: defaultData,
+    data: users,
     columns: glGolumns,
     getCoreRowModel: getCoreRowModel(),
   });

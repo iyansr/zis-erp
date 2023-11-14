@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
         index: true,
         element: <div>a</div>,
         loader: () => {
+          const token = localStorage.getItem('token');
+          if (token) {
+            return redirect('/dashboard');
+          }
           return redirect('/login');
         },
       },

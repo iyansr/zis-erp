@@ -4,19 +4,19 @@ import { EditIcon, Trash } from 'lucide-react';
 const columnHelper = createColumnHelper();
 
 export const glGolumns = [
-  columnHelper.accessor('name', {
+  columnHelper.accessor('user_nama', {
     header: () => <span>Name</span>,
   }),
-  columnHelper.accessor('role', {
+  columnHelper.accessor('type.user_type_name', {
     header: () => <span>Role</span>,
   }),
-  columnHelper.accessor('created', {
-    header: () => <span>Created</span>,
-  }),
-  columnHelper.accessor('status', {
+
+  columnHelper.accessor('user_status', {
     header: () => <span>Status</span>,
     cell: (info) => (
-      <span className="border border-slate-200 px-4 py-2 rounded-md">{info.getValue()}</span>
+      <span className="border border-slate-200 px-4 py-2 rounded-md">
+        {info.getValue() === 1 ? 'Verified' : 'No Verified'}
+      </span>
     ),
   }),
 

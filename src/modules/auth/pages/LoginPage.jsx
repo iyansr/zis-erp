@@ -1,21 +1,22 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
+import useMutateLogin from '../hooks/useMutateLogin';
 import { loginSchema } from '../schema/loginSchema';
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const form = useForm({
     resolver: zodResolver(loginSchema),
   });
-  const navigate = useNavigate();
+
+  const { mutate } = useMutateLogin();
 
   const onSubmit = (data) => {
-    console.log(data);
-    return navigate('/dashboard', {
-      replace: true,
-    });
+    mutate(data);
   };
 
   return (
@@ -27,14 +28,14 @@ const LoginPage = () => {
         </div>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <fieldset>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Email</label>
             <input
-              name="email"
+              name="username"
               type="text"
-              id="email"
+              id="username"
               placeholder="Email"
               className="input input-bordered w-full"
-              {...form.register('email')}
+              {...form.register('username')}
             />
             <p className="text-sm text-error">{form.formState.errors?.email?.message}</p>
           </fieldset>
@@ -44,17 +45,18 @@ const LoginPage = () => {
             <div className="relative">
               <input
                 name="password"
-                type="password"
+                type={!showPassword ? 'text' : 'password'}
                 id="password"
                 placeholder="Password"
                 className="input input-bordered w-full"
                 {...form.register('password')}
               />
               <button
+                onClick={() => setShowPassword((prev) => !prev)}
                 type="button"
                 className="absolute right-2 bottom-2 z-0 bg-white border-none btn btn-square btn-sm"
               >
-                <EyeOff size={16} />
+                {showPassword ? <Eye size={16} /> : <EyeOff size={16} />}
               </button>
             </div>
 
