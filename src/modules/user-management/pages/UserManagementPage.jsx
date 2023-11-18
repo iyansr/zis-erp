@@ -31,9 +31,35 @@ const UserManagementPage = () => {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <TableInstance table={table} />
+      <div className="flex space-x-4">
+        <div className="overflow-x-auto flex-1">
+          <TableInstance table={table} />
+        </div>
+
+        <div>
+          <div className="p-4 w-60 space-y-4 border rounded-md">
+            <div className="border-b pb-2">
+              <p className="font-semibold">Role Description</p>
+            </div>
+
+            <div className="leading-tight">
+              <p className="text-sm font-semibold">Super Admin</p>
+              <p className="text-xs">Has access to all menus and able to add new users.</p>
+            </div>
+            <div className="leading-tight">
+              <p className="text-sm font-semibold">Creative Admin</p>
+              <p className="text-xs">Has access to Banner Management for Website.</p>
+            </div>
+            <div className="leading-tight">
+              <p className="text-sm font-semibold">Approver Admin</p>
+              <p className="text-xs">
+                Has access to Approve Programs and Propose Finance for Financial Officer
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+
       {/* <div className="flex justify-end">
         <div className="join">
           <button className="join-item btn btn-ghost">«</button>

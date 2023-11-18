@@ -1,5 +1,8 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { EditIcon, Trash } from 'lucide-react';
+
+import DeleteAccessModal from './DeleteAccessModal';
+import EditUserModal from './EditUserModal';
+import ToggleUserActive from './ToggleUserActive';
 
 const columnHelper = createColumnHelper();
 
@@ -22,17 +25,16 @@ export const glGolumns = [
 
   columnHelper.accessor('action', {
     header: () => <span>Action</span>,
-    cell: () => (
-      <span>
-        <button className="btn btn-sm btn-ghost text-sm normal-case text-neutral">
-          <EditIcon className="h-3 w-3" />
-        </button>
-        <button className="btn btn-sm btn-ghost text-sm normal-case text-neutral">
-          <Trash className="h-3 w-3" />
-        </button>
-      </span>
-    ),
+    cell: (info) => {
+      return (
+        <span className="flex items-center">
+          <ToggleUserActive data={info.row.original} />
+          <EditUserModal data={info.row.original} />
+          <DeleteAccessModal data={info.row.original} />
+        </span>
+      );
+    },
     enablePinning: true,
-    size: 200,
+    size: 75,
   }),
 ];

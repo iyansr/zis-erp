@@ -3,16 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import api from '@/modules/shared/libs/axios';
 
 const request = async (params = {}) => {
-  const { page = 1, category = '', keyword = '', order = '', sortBy = '' } = params || {};
+  const { page = 1 } = params || {};
   const { data } = await api.request({
     method: 'GET',
-    url: '/user/all-users',
+    url: '/users',
     params: {
       page,
-      category,
-      keyword,
-      order,
-      sortBy,
     },
   });
 
