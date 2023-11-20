@@ -1,39 +1,45 @@
 import TableInstance from '@/modules/shared/components/TableInstance';
 
+import UserTableToolbar from '../components/UserTableToolbar';
 import useUserTable from '../hooks/useUserTable';
 
 const UserManagementPage = () => {
-  const table = useUserTable();
+  const { table, isLoading } = useUserTable();
+
   return (
     <div className="p-10">
-      <div className="mb-4">
-        <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-2xl">User Management</h2>
+      <div className="bg-slate-100 -mx-10 px-10 pt-10 pb-1 -mt-10">
+        <div className="mb-4">
+          <div className="flex items-center justify-between">
+            <h2 className="font-semibold text-2xl">User Management</h2>
+          </div>
         </div>
+
+        <UserTableToolbar table={table} />
       </div>
-
-      <div className="grid grid-cols-6 gap-4 my-6">
-        <div>
-          <label htmlFor="search" className="opacity-0">
-            search
-          </label>
-          <input
-            type="text"
-            name="search"
-            id="search"
-            className="input input-bordered w-full input-sm"
-            placeholder="Search"
-          />
-        </div>
-
-        <div className="flex mt-auto mb-1">
-          <button className="btn btn-xs btn-primary text-white">Go</button>
-        </div>
-      </div>
-
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 mt-6">
         <div className="overflow-x-auto flex-1">
-          <TableInstance table={table} />
+          <TableInstance table={table} isLoading={isLoading} />
+
+          <div className="flex justify-end">
+            <div className="join">
+              <button
+                className="join-item btn btn-ghost"
+                onClick={() => (table.getCanPreviousPage() ? table.previousPage() : null)}
+              >
+                «
+              </button>
+              <button className="join-item btn btn-ghost">
+                {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+              </button>
+              <button
+                className="join-item btn btn-ghost"
+                onClick={() => (table.getCanNextPage() ? table.nextPage() : null)}
+              >
+                »
+              </button>
+            </div>
+          </div>
         </div>
 
         <div>
@@ -59,14 +65,6 @@ const UserManagementPage = () => {
           </div>
         </div>
       </div>
-
-      {/* <div className="flex justify-end">
-        <div className="join">
-          <button className="join-item btn btn-ghost">«</button>
-          <button className="join-item btn btn-ghost">1 of 20</button>
-          <button className="join-item btn btn-ghost">»</button>
-        </div>
-      </div> */}
     </div>
   );
 };

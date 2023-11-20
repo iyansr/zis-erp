@@ -12,6 +12,7 @@ export const glGolumns = [
   }),
   columnHelper.accessor('type.user_type_name', {
     header: () => <span>Role</span>,
+    id: 'user_type',
   }),
 
   columnHelper.accessor('user_status', {
@@ -27,7 +28,7 @@ export const glGolumns = [
     header: () => <span>Action</span>,
     cell: (info) => {
       return (
-        <span className="flex items-center">
+        <span className="flex items-center" key={info.row.original.user_id}>
           <ToggleUserActive data={info.row.original} />
           <EditUserModal data={info.row.original} />
           <DeleteAccessModal data={info.row.original} />

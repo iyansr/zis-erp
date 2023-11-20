@@ -1,6 +1,16 @@
 import { flexRender } from '@tanstack/react-table';
 
-const TableInstance = ({ table }) => {
+const TableInstance = ({ table, isLoading = false }) => {
+  if (isLoading) {
+    return (
+      <div className="space-y-2">
+        <div className="skeleton h-6 w-full rounded-sm"></div>
+        <div className="skeleton h-6 w-[80%] rounded-sm"></div>
+        <div className="skeleton h-6 w-full rounded-sm"></div>
+        <div className="skeleton h-6 w-[80%] rounded-sm"></div>
+      </div>
+    );
+  }
   return (
     <table className="table overflow-x-auto table-fixed w-full table-md">
       <thead>

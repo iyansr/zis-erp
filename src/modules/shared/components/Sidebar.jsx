@@ -5,7 +5,7 @@ const Sidebar = () => {
         <img src="/icon.png" alt="Zis Icon" className="h-8 w-8" />
       </div>
       <div>
-        <div className="avatar">
+        <div className="avatar cursor-pointer">
           <div className="w-8 rounded-full">
             <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="User Icon" />
           </div>

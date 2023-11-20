@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 import api from '@/modules/shared/libs/axios';
 
@@ -9,6 +9,7 @@ const request = async (params = {}) => {
     url: '/users',
     params: {
       page,
+      ...params,
     },
   });
 
@@ -19,6 +20,7 @@ const useQueryUsers = (params = {}) => {
   return useQuery({
     queryKey: ['all-users', params],
     queryFn: () => request(params),
+    placeholderData: keepPreviousData,
   });
 };
 

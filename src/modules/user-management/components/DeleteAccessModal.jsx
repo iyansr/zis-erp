@@ -1,15 +1,18 @@
 import { TrashIcon, UserPlus } from 'lucide-react';
 import { useRef } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+
+import useMutateUpdateUser from '../hooks/useMutateUpdateUser';
 
 const DeleteAccessModal = ({ data }) => {
   const ref = useRef(null);
+  const { isPending } = useMutateUpdateUser();
 
   const form = useForm({
     defaultValues: {
       username: data.username,
       user_nama: data.user_nama,
-      type: data.user_type,
+      user_type: Number(data.user_type),
     },
   });
 
@@ -71,48 +74,75 @@ const DeleteAccessModal = ({ data }) => {
 
             <div className="flex items-center justify-between space-x-4 mt-2">
               <div className="form-control flex-1">
-                <label className="label cursor-pointer space-x-2 justify-start bg-slate-100 w-full px-4 py-2 rounded-md">
-                  <input
-                    {...form.register('type')}
-                    name="type"
-                    type="radio"
-                    checked
-                    value="7"
-                    className="radio radio-sm radio-accent checked:bg-accent"
-                  />
-                  <span>Admin</span>
-                </label>
+                <Controller
+                  control={form.control}
+                  name="user_type"
+                  render={({ field }) => {
+                    return (
+                      <label className="label cursor-pointer space-x-2 justify-start bg-slate-100 w-full px-4 py-2 rounded-md">
+                        <input
+                          type="radio"
+                          checked={Number(field.value) === 7}
+                          onChange={field.onChange}
+                          value={7}
+                          className="radio radio-sm radio-accent checked:bg-accent"
+                        />
+                        <span>Admin</span>
+                      </label>
+                    );
+                  }}
+                />
               </div>
               <div className="form-control flex-1">
-                <label className="label cursor-pointer space-x-2 justify-start bg-slate-100 w-full px-4 py-2 rounded-md">
-                  <input
-                    {...form.register('type')}
-                    name="type"
-                    type="radio"
-                    value="8"
-                    className="radio radio-sm radio-accent checked:bg-accent"
-                  />
-                  <span>Finance</span>
-                </label>
+                <Controller
+                  control={form.control}
+                  name="user_type"
+                  render={({ field }) => {
+                    return (
+                      <label className="label cursor-pointer space-x-2 justify-start bg-slate-100 w-full px-4 py-2 rounded-md">
+                        <input
+                          type="radio"
+                          checked={Number(field.value) === 8}
+                          onChange={field.onChange}
+                          value={8}
+                          className="radio radio-sm radio-accent checked:bg-accent"
+                        />
+                        <span>Finance</span>
+                      </label>
+                    );
+                  }}
+                />
               </div>
               <div className="form-control flex-1">
-                <label className="label cursor-pointer space-x-2 justify-start bg-slate-100 w-full px-4 py-2 rounded-md">
-                  <input
-                    {...form.register('type')}
-                    name="type"
-                    type="radio"
-                    value="12"
-                    className="radio radio-sm radio-accent checked:bg-accent"
-                  />
-                  <span>Officer</span>
-                </label>
+                <Controller
+                  control={form.control}
+                  name="user_type"
+                  render={({ field }) => {
+                    return (
+                      <label className="label cursor-pointer space-x-2 justify-start bg-slate-100 w-full px-4 py-2 rounded-md">
+                        <input
+                          type="radio"
+                          checked={Number(field.value) === 12}
+                          onChange={field.onChange}
+                          value={12}
+                          className="radio radio-sm radio-accent checked:bg-accent"
+                        />
+                        <span>Officer</span>
+                      </label>
+                    );
+                  }}
+                />
               </div>
             </div>
 
-            <div className="flex items-center space-x-4 w-full mt-6">
-              <button className="btn btn-accent btn-outline text-white flex-1">Cancel</button>
-              <button className="btn btn-accent text-white flex-1">Done</button>
-            </div>
+            <button
+              className="btn btn-accent text-white btn-md w-full mt-6"
+              disabled={isPending}
+              // onClick={form.handleSubmit(onSubmit)}
+            >
+              {isPending && <span className="loading loading-infinity"></span>}
+              Done
+            </button>
           </div>
         </div>
         <form method="dialog" className="modal-backdrop">

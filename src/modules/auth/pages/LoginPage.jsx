@@ -45,7 +45,7 @@ const LoginPage = () => {
             <div className="relative">
               <input
                 name="password"
-                type={!showPassword ? 'text' : 'password'}
+                type={showPassword ? 'text' : 'password'}
                 id="password"
                 placeholder="Password"
                 className="input input-bordered w-full"
@@ -56,7 +56,7 @@ const LoginPage = () => {
                 type="button"
                 className="absolute right-2 bottom-2 z-0 bg-white border-none btn btn-square btn-sm"
               >
-                {showPassword ? <Eye size={16} /> : <EyeOff size={16} />}
+                {!showPassword ? <Eye size={16} /> : <EyeOff size={16} />}
               </button>
             </div>
 
