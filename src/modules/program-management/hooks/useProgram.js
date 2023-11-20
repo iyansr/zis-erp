@@ -6,7 +6,7 @@ const request = async (params = {}) => {
   const { page = 1, category = '', keyword = '', order = '', sortBy = '' } = params || {};
   const { data } = await api.request({
     method: 'GET',
-    url: '/home/program',
+    url: '/programs',
     params: {
       page,
       category,

@@ -4,7 +4,7 @@ import { glGolumns } from '../components/column';
 import useProgram from './useProgram';
 
 const useProgramTable = () => {
-  const { data } = useProgram();
+  const { data, ...rest } = useProgram();
 
   const programs = data?.data ?? [];
 
@@ -14,7 +14,7 @@ const useProgramTable = () => {
     getCoreRowModel: getCoreRowModel(),
   });
 
-  return table;
+  return { table, ...rest };
 };
 
 export default useProgramTable;

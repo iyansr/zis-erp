@@ -4,7 +4,7 @@ import { EditIcon, Trash } from 'lucide-react';
 const columnHelper = createColumnHelper();
 
 export const glGolumns = [
-  columnHelper.accessor('program_banner.banners_path', {
+  columnHelper.accessor('banners.banners_path', {
     header: () => <span>Thumbnail</span>,
     cell: (info) => (
       <img
@@ -14,7 +14,7 @@ export const glGolumns = [
       />
     ),
   }),
-  columnHelper.accessor('program_banner.banners_path', {
+  columnHelper.accessor('banners.banners_path', {
     header: () => <span>File Name</span>,
     size: 300,
   }),
