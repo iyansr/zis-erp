@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-COPY .env.local .env
+COPY .env.production.local .env
 
 RUN npm run build
 
@@ -17,7 +17,7 @@ FROM --platform=linux/amd64 node:18-alpine as PROD_IMAGE
 WORKDIR /app/zis-erp
 
 COPY --from=BUILD_IMAGE /app/zis-erp/dist /app/zis-erp/dist
-COPY .env.local .env
+COPY .env.production.local .env
 
 EXPOSE 8088
 
