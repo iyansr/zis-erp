@@ -1,43 +1,57 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { EditIcon, Trash } from 'lucide-react';
+import { format } from 'date-fns';
+
+import DetailProgramModal from './DetailProgramModal';
 
 const columnHelper = createColumnHelper();
 
 export const glGolumns = [
-  columnHelper.accessor('banners.banners_path', {
-    header: () => <span>Thumbnail</span>,
-    cell: (info) => (
-      <img
-        src={`https://jittery-lion-tie.cyclic.app/public/${info.getValue()}`}
-        alt="Thumbnail"
-        className="w-28 aspect-video"
-      />
-    ),
+  columnHelper.accessor('user.mustahiq_id', {
+    header: () => <span>Mustahiq ID</span>,
   }),
-  columnHelper.accessor('banners.banners_path', {
-    header: () => <span>File Name</span>,
+  columnHelper.accessor('user.user_nama', {
+    header: () => <span>Nama Mustahiq</span>,
     size: 300,
   }),
+  columnHelper.accessor('program_category.name', {
+    header: () => <span>Tujuan Proposal</span>,
+    cell: (info) => {
+      return (
+        <span className="border border-slate-200 px-4 py-2 rounded-md">
+          {info.getValue() || '-'}
+        </span>
+      );
+    },
+  }),
+  columnHelper.accessor('program_create', {
+    header: () => <span>Tanggal Submit</span>,
+    cell: (info) => {
+      return format(new Date(info.getValue()), 'dd/MM/yyyy');
+    },
+  }),
+  columnHelper.accessor('user.mustahiq.bank_number', {
+    header: () => <span>Nomor Rekening</span>,
+  }),
   columnHelper.accessor('program_id', {
-    header: () => <span>Routing Link</span>,
+    header: () => <span>Subdomain Proposal</span>,
     cell: (info) => {
       const href = `https://portal.zisindosat.id/program/${info.getValue()}`;
       return (
-        <a href={href} target="_blank" rel="noreferrer" className="underline">
+        <a href={href} target="_blank" rel="noopener noreferrer">
           {href}
         </a>
       );
     },
-  }),
-  columnHelper.accessor('created', {
-    header: () => <span>Created</span>,
+    size: 300,
   }),
   columnHelper.accessor('program_status', {
     header: () => <span>Status</span>,
+    size: 300,
     cell: (info) => {
       const status = info.getValue();
       const label = {
-        1: 'InActive',
+        0: 'Ditolak',
+        1: 'Menunggu Persetujuan',
         2: 'Active',
       };
 
@@ -47,15 +61,9 @@ export const glGolumns = [
 
   columnHelper.accessor('action', {
     header: () => <span>Action</span>,
-    cell: () => (
-      <span className="flex items-center space-x-2">
-        <input type="checkbox" className="toggle toggle-sm toggle-accent" defaultChecked />
-        <button className="btn btn-sm btn-ghost text-sm normal-case text-neutral">
-          <EditIcon className="h-3 w-3" />
-        </button>
-        <button className="btn btn-sm btn-ghost text-sm normal-case text-neutral">
-          <Trash className="h-3 w-3" />
-        </button>
+    cell: (info) => (
+      <span className="flex items-center space-x-2" key={info.row.original.program_id}>
+        <DetailProgramModal data={info.row.original} />
       </span>
     ),
     enablePinning: true,
