@@ -20,26 +20,6 @@ const UserManagementPage = () => {
       <div className="flex space-x-4 mt-6">
         <div className="overflow-x-auto flex-1">
           <TableInstance table={table} isLoading={isLoading} />
-
-          <div className="flex justify-end">
-            <div className="join">
-              <button
-                className="join-item btn btn-ghost"
-                onClick={() => (table.getCanPreviousPage() ? table.previousPage() : null)}
-              >
-                «
-              </button>
-              <button className="join-item btn btn-ghost">
-                {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-              </button>
-              <button
-                className="join-item btn btn-ghost"
-                onClick={() => (table.getCanNextPage() ? table.nextPage() : null)}
-              >
-                »
-              </button>
-            </div>
-          </div>
         </div>
 
         <div>

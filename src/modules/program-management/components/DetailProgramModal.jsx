@@ -1,8 +1,13 @@
 import { format } from 'date-fns';
 import { useRef } from 'react';
 
+import useMutateApproveProgram from '../hooks/useMutateApproveProgram';
+import DetailMustahiqModal from './DetailMustahiqModal';
+
 const DetailProgramModal = ({ data }) => {
   const ref = useRef(null);
+
+  const { mutateAsync, isPending } = useMutateApproveProgram();
 
   const showModal = () => {
     ref.current?.showModal();
@@ -10,6 +15,12 @@ const DetailProgramModal = ({ data }) => {
 
   const closeModal = () => {
     ref.current?.close();
+  };
+
+  const handleApprove = () => {
+    mutateAsync({ id: data.program_id }).then(() => {
+      closeModal();
+    });
   };
 
   const label = {
@@ -98,7 +109,17 @@ const DetailProgramModal = ({ data }) => {
             />
           </div>
 
-          <button className="btn btn-accent text-white btn-md w-full mt-6">Setujui</button>
+          <DetailMustahiqModal user={data.user} />
+          {data.program_status === 1 && (
+            <button
+              onClick={handleApprove}
+              disabled={isPending}
+              className="btn btn-accent text-white btn-md w-full mt-6"
+            >
+              {isPending && <span className="loading loading-infinity"></span>}
+              Setujui
+            </button>
+          )}
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>

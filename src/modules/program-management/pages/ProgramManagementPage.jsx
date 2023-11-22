@@ -1,9 +1,23 @@
+import { useForm } from 'react-hook-form';
+
 import TableInstance from '@/modules/shared/components/TableInstance';
 
 import useProgramTable from '../hooks/useProgramTable';
 
 const ProgramManagementPage = () => {
   const { table, isLoading } = useProgramTable();
+
+  const form = useForm({
+    defaultValues: {
+      program_title: '',
+    },
+  });
+
+  const onSearch = (data) => {
+    if (data.program_title) {
+      table.getColumn('program_title')?.setFilterValue(data.program_title);
+    }
+  };
 
   return (
     <div className="p-10">
@@ -25,11 +39,30 @@ const ProgramManagementPage = () => {
               id="search"
               className="input input-bordered w-full input-sm"
               placeholder="Search"
+              {...form.register('program_title')}
             />
           </div>
 
-          <div className="flex mt-auto mb-1">
-            <button className="btn btn-xs btn-primary text-white">Go</button>
+          <div className="flex mt-auto">
+            {form.formState.isDirty && (
+              <button
+                type="button"
+                className="btn btn-sm btn-ghost mr-2"
+                onClick={() => {
+                  form.reset();
+                  table.resetColumnFilters();
+                }}
+              >
+                Reset
+              </button>
+            )}
+            <button
+              onClick={form.handleSubmit(onSearch)}
+              className="btn btn-sm btn-primary text-white"
+              type="submit"
+            >
+              Go
+            </button>
           </div>
         </div>
       </div>
@@ -37,13 +70,6 @@ const ProgramManagementPage = () => {
       <div className="overflow-x-auto">
         <TableInstance table={table} isLoading={isLoading} />
       </div>
-      {/* <div className="flex justify-end">
-        <div className="join">
-          <button className="join-item btn btn-ghost">«</button>
-          <button className="join-item btn btn-ghost">1 of 20</button>
-          <button className="join-item btn btn-ghost">»</button>
-        </div>
-      </div> */}
     </div>
   );
 };

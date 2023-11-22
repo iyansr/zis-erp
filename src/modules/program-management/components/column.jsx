@@ -13,6 +13,10 @@ export const glGolumns = [
     header: () => <span>Nama Mustahiq</span>,
     size: 300,
   }),
+  columnHelper.accessor('program_title', {
+    header: () => <span>Judul Program</span>,
+    size: 300,
+  }),
   columnHelper.accessor('program_category.name', {
     header: () => <span>Tujuan Proposal</span>,
     cell: (info) => {
