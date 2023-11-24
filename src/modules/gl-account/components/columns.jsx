@@ -4,20 +4,23 @@ import { EditIcon } from 'lucide-react';
 const columnHelper = createColumnHelper();
 
 export const glGolumns = [
-  columnHelper.accessor('glAccount', {
+  columnHelper.accessor('gl_account', {
     header: () => <span>G/L Account</span>,
   }),
-  columnHelper.accessor('shortText', {
-    header: () => <span>Short Text</span>,
+  columnHelper.accessor('gl_name', {
+    header: () => <span>Nama GL</span>,
   }),
-  columnHelper.accessor('accounts', {
-    header: () => <span>Charts of Accounts</span>,
+  columnHelper.accessor('description', {
+    header: () => <span>Penjelasan Singkat</span>,
   }),
-  columnHelper.accessor('type', {
-    header: () => <span>Tipe G/L Accont</span>,
+  columnHelper.accessor('coa', {
+    header: () => <span>COA</span>,
   }),
-  columnHelper.accessor('group', {
-    header: () => <span>Group Accont</span>,
+  columnHelper.accessor('gl_type', {
+    header: () => <span>Tipe GL Account</span>,
+  }),
+  columnHelper.accessor('gl_group', {
+    header: () => <span>Group Account</span>,
   }),
   columnHelper.accessor('status', {
     header: () => <span>Status</span>,
@@ -27,8 +30,11 @@ export const glGolumns = [
   }),
   columnHelper.accessor('action', {
     header: () => <span>Action</span>,
-    cell: () => (
-      <button className="btn btn-sm btn-outline text-sm normal-case border-accent text-accent">
+    cell: (info) => (
+      <button
+        key={info.row.original.id}
+        className="btn btn-sm btn-outline text-sm normal-case border-accent text-accent"
+      >
         <EditIcon className="h-3 w-3" /> Edit GL Account
       </button>
     ),
