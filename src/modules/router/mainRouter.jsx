@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>a</div>,
+        element: <div></div>,
         loader: () => {
           const token = localStorage.getItem('token');
           if (token) {

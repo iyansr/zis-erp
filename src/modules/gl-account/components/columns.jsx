@@ -1,5 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import { EditIcon } from 'lucide-react';
+
+import UpdateGLModal from './UpdateGLModal';
 
 const columnHelper = createColumnHelper();
 
@@ -24,20 +25,21 @@ export const glGolumns = [
   }),
   columnHelper.accessor('status', {
     header: () => <span>Status</span>,
-    cell: (info) => (
-      <span className="badge badge-success badge-md text-white">{info.getValue()}</span>
-    ),
+    cell: (info) => {
+      const color = {
+        active: 'success',
+        inactive: 'error',
+        blocked: 'warning',
+      };
+
+      return (
+        <span className={`badge badge-${color[info.getValue()]} badge-md`}>{info.getValue()}</span>
+      );
+    },
   }),
   columnHelper.accessor('action', {
     header: () => <span>Action</span>,
-    cell: (info) => (
-      <button
-        key={info.row.original.id}
-        className="btn btn-sm btn-outline text-sm normal-case border-accent text-accent"
-      >
-        <EditIcon className="h-3 w-3" /> Edit GL Account
-      </button>
-    ),
+    cell: (info) => <UpdateGLModal data={info.row.original} key={info.row.original.id} />,
     enablePinning: true,
     size: 200,
   }),

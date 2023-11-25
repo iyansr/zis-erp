@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import TableInstance from '../../shared/components/TableInstance';
 import AddGLModal from '../components/AddGLModal';
+import GLAccountToolbar from '../components/GLAccountToolbar';
 import useGLTable from '../hooks/useGLTable';
 
 const GLAccountPage = () => {
@@ -31,46 +32,7 @@ const GLAccountPage = () => {
         <h4 className="text-xl text-zinc-500">Mulai masukkan Data untuk menampilkan akun GL</h4>
       </div>
 
-      {/* <div className="grid grid-cols-6 gap-4 my-6">
-        <div>
-          <label htmlFor="glAcoounts" className="text-sm">
-            G/L Accounts
-          </label>
-          <input
-            type="text"
-            name="glAcoounts"
-            id="glAcoounts"
-            className="input input-bordered w-full input-sm"
-          />
-        </div>
-        <div>
-          <label htmlFor="type" className="text-sm">
-            Tipe Accounts
-          </label>
-          <input
-            type="text"
-            name="type"
-            id="type"
-            className="input input-bordered w-full input-sm"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="view" className="text-sm">
-            Tampilan / View
-          </label>
-          <input
-            type="text"
-            name="view"
-            id="view"
-            className="input input-bordered w-full input-sm"
-          />
-        </div>
-
-        <div className="flex mt-auto mb-1">
-          <button className="btn btn-xs btn-primary text-white">Go</button>
-        </div>
-      </div> */}
+      <GLAccountToolbar table={table} />
 
       <div className="overflow-x-auto">
         <TableInstance table={table} isLoading={isLoading} />

@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { PlusIcon, UserPlus } from 'lucide-react';
+import { EditIcon, UserPlus } from 'lucide-react';
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import useMutateAddGLAccount from '../hooks/useMutateAddGLAccount';
+import useMutateUpdateGLAccount from '../hooks/useMutateUpdateGLAccount';
 
 export const registerSchema = z.object({
   gl_account: z.string().min(1),
@@ -37,17 +37,17 @@ const generateFormFields = (schema) => {
   }));
 };
 
-const AddGLModal = () => {
+const UpdateGLModal = ({ data }) => {
   const ref = useRef(null);
 
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      status: 'active',
+      ...data,
     },
   });
 
-  const { mutateAsync, isPending } = useMutateAddGLAccount();
+  const { mutateAsync, isPending } = useMutateUpdateGLAccount();
 
   const showModal = () => {
     ref.current?.showModal();
@@ -58,7 +58,7 @@ const AddGLModal = () => {
   };
 
   const onSubmit = (formData) => {
-    mutateAsync(formData).then(() => {
+    mutateAsync({ ...formData, id: data.id }).then(() => {
       closeModal();
       form.reset();
     });
@@ -69,8 +69,11 @@ const AddGLModal = () => {
 
   return (
     <>
-      <button onClick={showModal} className="btn btn-accent btn-md text-white normal-case">
-        <PlusIcon /> Buat GL Account Baru
+      <button
+        onClick={showModal}
+        className="btn btn-sm btn-outline text-sm normal-case border-accent text-accent"
+      >
+        <EditIcon className="h-3 w-3" /> Edit GL Account
       </button>
       <dialog ref={ref} className="modal">
         <div className="modal-box">
@@ -132,4 +135,4 @@ const AddGLModal = () => {
   );
 };
 
-export default AddGLModal;
+export default UpdateGLModal;

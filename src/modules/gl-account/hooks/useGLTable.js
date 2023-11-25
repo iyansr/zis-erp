@@ -12,6 +12,8 @@ const useGLTable = () => {
   const { data, ...rest } = useQueryGLAccount({
     page: pageIndex + 1,
     perPage: pageSize,
+    gl_account: columnFilters.find((filter) => filter.id === 'gl_account')?.value,
+    gl_name: columnFilters.find((filter) => filter.id === 'gl_name')?.value,
   });
 
   const glAccounts = useMemo(() => data?.data || [], [data]);
