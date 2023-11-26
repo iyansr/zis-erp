@@ -4,6 +4,7 @@ import LoginPage from '../auth/pages/LoginPage';
 import BankMasterDataPage from '../bank-master-data/pages/BankMasterDataPage';
 import AlokasiAnggaranPage from '../budgeting/pages/AlokasiAnggaranPage';
 import DashboardPage from '../dashboard/pages/DashboardPage';
+import DocumentTypeScreen from '../document-type/screens/DocumentTypeScreen';
 import GLAccountPage from '../gl-account/pages/GLAccountPage';
 import MasterDataPage from '../master-data/pages/MasterDataPage';
 import ProgramManagementPage from '../program-management/pages/ProgramManagementPage';
@@ -75,6 +76,14 @@ export const router = createBrowserRouter([
                 element: (
                   <MasterDataLayout isRoot={false}>
                     <VendorMasterDataPage />
+                  </MasterDataLayout>
+                ),
+              },
+              {
+                path: 'document-type',
+                element: (
+                  <MasterDataLayout isRoot={false}>
+                    <DocumentTypeScreen />
                   </MasterDataLayout>
                 ),
               },

@@ -13,7 +13,7 @@ const login = async ({ username, password }) => {
     },
   });
 
-  return data;
+  return data.data;
 };
 
 const useMutateLogin = () => {

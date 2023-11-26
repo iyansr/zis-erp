@@ -26,7 +26,7 @@ const data = [
     title: 'Document Type Master Data',
     description: 'Pengaturan Master Data Dokumen',
     Icon: FileText,
-    href: '#!',
+    href: '/dashboard/master-data/document-type',
   },
   {
     title: 'Bank',
