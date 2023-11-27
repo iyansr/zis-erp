@@ -17,7 +17,7 @@ export const glGolumns = [
   columnHelper.accessor('coa', {
     header: () => <span>COA</span>,
   }),
-  columnHelper.accessor('gl_type', {
+  columnHelper.accessor('gl_account_type.gla_type', {
     header: () => <span>Tipe GL Account</span>,
   }),
   columnHelper.accessor('gl_group', {

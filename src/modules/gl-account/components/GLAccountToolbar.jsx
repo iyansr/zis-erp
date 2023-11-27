@@ -30,11 +30,7 @@ const GLAccountToolbar = ({ table }) => {
       </div>
       <div>
         <label className="text-sm">Nama Akun</label>
-        <input
-          name="type"
-          className="input input-bordered w-full input-sm"
-          {...form.register('gl_name')}
-        />
+        <input className="input input-bordered w-full input-sm" {...form.register('gl_name')} />
       </div>
 
       <div className="flex mt-auto ">
